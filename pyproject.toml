@@ -1,0 +1,39 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "lv-chordia-lab"
+version = "0.1.0"
+description = "Desktop validation GUI for lv-chordia."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "lv-chordia",
+    "PySide6>=6.8",
+    "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff>=0.12",
+]
+
+[project.scripts]
+lv-chordia-lab = "lv_chordia_lab.app:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/lv_chordia_lab"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+src = ["src"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "auto"
